@@ -6,5 +6,5 @@ from recipes.views import (  # importando as funções que vão renderizar as p�
 urlpatterns = [  # rotas
     path('', home),  # rota inicial do site
     path('usuarios/', usuarios),  # rota usuarios
-    path('informações/', informacao),  # rota informações
+    path('informacao/', informacao),  # rota informações
 ]
