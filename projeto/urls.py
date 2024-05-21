@@ -6,7 +6,8 @@ urlpatterns = [
     # puxando as rotas (urls) do app recipes
 
     path('', include('recipes.urls')),
-    # puxando as rotas (urls) do app recipes na nova rota
+    # puxando as rotas (urls) do app recipes na rota da pagina inicial
 
+    # puxando as rotas (urls) do app recipes na rota 'inicial/recipes/'
     path('recipes/', include('recipes.urls')),
 ]
