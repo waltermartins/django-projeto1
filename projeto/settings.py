@@ -56,7 +56,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'projeto/base_templates',  # informando uma pasta de templates
+            # informando uma pasta de templates fora do app
+            BASE_DIR / 'projeto/base_templates',
 
         ],
         'APP_DIRS': True,
@@ -119,7 +120,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'  # a pasta static onde estão os arquivos estaticos do app
+STATICFILES_DIRS = [
+    BASE_DIR / 'projeto/base_static',  # pasta de arquivos estaticos fora do app
+]
+
+STATIC_ROOT = BASE_DIR / 'static'
+# configuração necessária para utilização de servidor próprio de produção. Os arquivos estaticos ficarão nesta pasta.
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

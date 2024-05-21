@@ -1,5 +1,5 @@
-from django.http import \
-    HttpResponse  # importando o protocolo http (request e response)
+# from django.http import \
+#     HttpResponse  # importando o protocolo http (request e response)
 from django.shortcuts import \
     render  # importando a função que vai renderizar as paginas
 
@@ -18,3 +18,7 @@ def usuarios(request):  # função que vai exibir a pagina da rota 'usuarios'
 
 def informacao(request):
     return render(request, 'recipes/pages/informacao.html')
+
+
+def recipes(request, id):
+    return render(request, 'recipes/pages/recipe-view.html')
