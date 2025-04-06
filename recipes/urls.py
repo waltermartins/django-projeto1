@@ -13,6 +13,8 @@ urlpatterns = [  # rotas
     path('', views.home, name='recipes-home'),
     # path('', views.home, name='home'), # com a variavel (app_name) criada podemos omitir o 'recipes'
 
+    path('category/<int:category_id>/', views.category, name='recipes-category'),  # a rota das receitas por categoria
+
     # criando uma rota dinamicamente <int:id> / nome da url
     path('recipes/<int:id>/', views.recipes, name='recipes-recipe'),
 

@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+# noqa: E501
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=pwa5vd7s(6cy9xuqm$1gg2dg*a0%b3gv7ne!h_%f6vnn*f4v%'
+SECRET_KEY = 'django-insecure-=pwa5vd7s(6cy9xuqm$1gg2dg*a0%b3gv7ne!h_%f6vnn*f4v%' # noqa:E501, E261
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,16 +93,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', # noqa:E501, E261
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', # noqa:E501, E261
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', # noqa:E501, E261
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', # noqa:E501, E261
     },
 ]
 
@@ -108,9 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'  # altera o idioma
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'  # altera o fuso horario
 
 USE_I18N = True
 
@@ -120,13 +122,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'  # a pasta static onde estão os arquivos estaticos do app
+STATIC_URL = '/static/'  # a pasta static onde estão os arquivos estaticos do app # noqa:E501, E261
 STATICFILES_DIRS = [
-    BASE_DIR / 'projeto/base_static',  # pasta de arquivos estaticos fora do app
+    BASE_DIR / 'projeto/base_static',  # pasta de arquivos estaticos fora do app # noqa:E501, E261
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'
-# configuração necessária para utilização de servidor próprio de produção. Os arquivos estaticos ficarão nesta pasta.
+# configuração necessária para utilização de servidor próprio de produção. Os arquivos estaticos ficarão nesta pasta. # noqa:E501, E261
+
+MEDIA_URL = '/media/'  # pasta onde serão salvos os arquivos de imagem
+MEDIA_ROOT = BASE_DIR / 'media'  # salvar nesta pasta
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

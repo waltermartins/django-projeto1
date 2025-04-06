@@ -1,14 +1,10 @@
 {% extends 'global/base.html' %}  <!-- extendendo as informações do arquivo base da pagina -->
 
-{% block title %}HOME | {% endblock title %}
+{% block title %} {{ title }} {% endblock title %}
 {% block content %}  <!-- utilizando o bloco de conteudos criado no arquivo base. O bloco de conteudos recebeu o conteudo dentro dele -->>
 <div class="main-content main-content-list container">
     {% for recipe in recipes %}
         {% include 'recipes/partials/recipe.html' %}
-    {% empty %}
-        <div class="center">
-            <h1>Not recipes found here</h1>
-        </div>        
     {% endfor %}
 </div>  
 {% endblock content %}

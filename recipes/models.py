@@ -1,10 +1,13 @@
-from django.contrib.auth.models import \
-    User  # importando o model usuario do django
+# importando o model usuario do django
+from django.contrib.auth.models import User
 from django.db import models
 
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
+
+    def __str__(self):  # retorna o nome da categoria
+        return self.name
 
 
 class Recipe(models.Model):
@@ -25,12 +28,15 @@ class Recipe(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     is_publish = models.BooleanField(default=False)
     # ao trabalhar com imagens, instalar o pillow. pip install pillow
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/', blank=True, default='') # salvando a imagem no local e formato especificado
 
-    category = models.ForeignKey(  # fazendo relação com a classe Categoria
-        # se a categoria for apagada, campo será 'null'
-        Category, on_delete=models.SET_NULL, null=True)
+    # fazendo relação com a classe Categoria
+    # se a categoria for apagada, campo será 'null'
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, default=None)
 
-    author = models.ForeignKey(  # fazendo relação com a classe User, importada do django
-        # se a categoria for apagada, campo será 'null'
-        User, on_delete=models.SET_NULL, null=True)
+    # fazendo relação com a classe User, importada do django
+    # se a categoria for apagada, campo será 'null'
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.title

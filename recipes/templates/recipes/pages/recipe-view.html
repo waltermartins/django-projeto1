@@ -1,6 +1,6 @@
 {% extends 'global/base.html' %}  <!-- extendendo as informações da pagina base -->
 
-{% block title %}ALTERAR | {% endblock title %}
+{% block title %} {{ title }} | {% endblock title %}
 {% block content %} <!-- utilizando o bloco de conteudos da pagina base para inserção do conteudo especifico -->
 <div class="main-content main-content-detail container">
     <div class="recipe recipe-list-item">
@@ -20,8 +20,10 @@
                 <i class="fas fa-calendar-alt"></i>
                 {{ recipe.created_at|date:"d/m/Y" }}
             </span>
+            
+            
             <span class="recipe-author-item">
-                <a href="">
+                <a href="{% url 'recipes-category' recipe.category.id %}">
                     <i class="fas fa-layer-group"></i>
                     <span>{{ recipe.category.name }}</span>
                 </a>
@@ -57,7 +59,11 @@
 
         {% if is_detail_page is True %}
             <div class="preparation-steps">
-                {{ recipe.preparation_steps|linebreaksbr }}
+                {% if recipe.preparation_steps_is_html is True %}
+                    {{ recipe.preparation_steps|safe }}
+                {% else %}
+                    {{ recipe.preparation_steps|linebreaksbr }}
+                {% endif %}
             </div>
         {% endif %}
     </div>
